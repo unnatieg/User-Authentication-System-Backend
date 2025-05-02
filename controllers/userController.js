@@ -3,42 +3,26 @@ const bcrypt = require('bcrypt');
 const User = require ('../models/user');
 require('dotenv').config(); 
 // SIGNUP (CREATE A NEW USER) API
-exports.create = async (req, res)=>
-{
-    if (!req.body.email || !req.body.firstName || !req.body.lastName || !req.body.password || !req.body.phone) {
-        res.status(400).send({ message: "Content can not be empty!" });
+exports.create = async (req, res) => {
+    const { email, firstName, lastName, password, phone } = req.body;
+    if (!email || !firstName || !lastName || !password || !phone) {
+        return res.status(400).send({ message: "All fields are required" });
     }
-    else
-    {
-        try{
+
+    try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).send({ message: "Email is already in use" });
+        }
 
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);       
-        const newUser = new User(
-            {
-                email: req.body.email,
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                phone: req.body.phone,
-                password: hashedPassword
-
-            }
-        )
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const newUser = new User({ email, firstName, lastName, phone, password: hashedPassword });
 
         const savedUser = await newUser.save();
-
-        res.status(201).send({message: "new user data saved", data: savedUser});
-
-        }
-
-        catch (err) {
-
-            
-            res.status(500).send({ message: err.message });
-
-            
-
-        }
+        res.status(201).send({ message: "New user data saved", data: savedUser });
+    } catch (err) {
+        res.status(500).send({ message: err.message });
     }
 };
 //LOGIN FOR EXISTING USER
@@ -54,7 +38,7 @@ exports.login= async(req,res)=>
           }
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (isPasswordValid) {
-            const token = jwt.sign( { id: user._id, email: user.email },process.env.SECRET_KEY); 
+            const token = jwt.sign({ id: user._id, email: user.email }, process.env.SECRET_KEY, { expiresIn: '1h' });
             res.cookie("token", token, { httpOnly: true });
             res.status(200).json({ message: 'Login successful' });
           } else {
