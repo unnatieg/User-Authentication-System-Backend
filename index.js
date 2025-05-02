@@ -20,7 +20,7 @@ app.get('/', (req,res)=>
 
 app.get("/*any",(req,res)=>
 {
-    res.send("if any other route, come here.")
+    res.send("If any other route, come here.")
 })
 
 
@@ -28,9 +28,9 @@ app.listen(PORT, (err)=>
 {
     if(!err)
     {
-        console.log("server setup successful! App is listening on PORT ", PORT);
+        console.log("Server setup successful! App is listening on PORT ", PORT);
     }
     else{
-        console.log("server not connected ", err);
+        console.log("Server not connected ", err);
     }
 })
