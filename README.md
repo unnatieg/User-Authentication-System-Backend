@@ -281,11 +281,24 @@ Here’s an overview of the key files and folders in the project:
 │ └── user.js # Mongoose schema for the user model
 ├── routes/
 │ └── userRoutes.js # Contains routes for user authentication and profile management
+├── middleware/
+│ └── authMiddleware.js # Middleware for verifying JWT tokens
 ├── .env # Environment variables (not included in the repo)
 ├── index.js # Main entry point of the application
 ├── package.json # Project dependencies and scripts
 └── config/
 └── database.config.js # MongoDB connection configuration (if any)
+
+
+### Explanation:
+- **controllers/**: Stores the business logic, like user creation, authentication, profile update, etc.
+- **models/**: Contains Mongoose schemas defining the structure of the data in the database.
+- **routes/**: Holds all route definitions. For example, `userRoutes.js` for user-specific routes.
+- **middleware/**: Contains any middleware, such as JWT verification (`authMiddleware.js`).
+- **.env**: A file where you can store sensitive information like database credentials and JWT secret.
+- **index.js**: Main entry point for the application that initializes the Express server.
+- **config/**: A directory where configuration files (like for MongoDB) can be stored.
+
 
 
 ---
