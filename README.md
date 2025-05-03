@@ -286,7 +286,7 @@ Here’s an overview of the key files and folders in the project:
 ├── index.js # Main entry point of the application
 ├── package.json # Project dependencies and scripts
 └── config/
-└── database.config.js # MongoDB connection configuration
+    └──database.config.js # MongoDB connection configuration
 
 
 ```
