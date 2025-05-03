@@ -275,19 +275,9 @@ Before setting up this project, ensure you have the following installed:
 
 Here’s an overview of the key files and folders in the project:
 
-├── controllers/
-│ └── userController.js # Contains all user-related API logic
-├── models/
-│ └── user.js # Mongoose schema for the user model
-├── routes/
-│ └── userRoutes.js # Contains routes for user authentication and profile management
-├── middleware/
-│ └── authMiddleware.js # Middleware for verifying JWT tokens
-├── .env # Environment variables (not included in the repo)
-├── index.js # Main entry point of the application
-├── package.json # Project dependencies and scripts
-└── config/
-└── database.config.js # MongoDB connection configuration (if any)
+. ├── controllers/ │ └── userController.js # Contains all user-related API logic ├── models/ │ └── user.js # Mongoose schema for the user model ├── routes/ │ └── userRoutes.js # Contains routes for user authentication and profile management ├── middleware/ │ └── authMiddleware.js # Middleware for verifying JWT tokens ├── .env # Environment variables (not included in the repo) ├── index.js # Main entry point of the application ├── package.json # Project dependencies and scripts └── config/ └── database.config.js # MongoDB connection configuration 
+
+
 
 
 ### Explanation:
