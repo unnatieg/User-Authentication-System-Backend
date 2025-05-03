@@ -1,12 +1,10 @@
-
-````
 # **Project Overview**
 
 ## **Objective**
 
 This project provides the following functionalities:
 
-- **User Registration**: Allows users to sign up by providing an email, password, phone number and name (first name and last name).
+- **User Registration**: Allows users to sign up by providing an email, password, phone number, and name (first name and last name).
 - **User Login**: Authenticates users, allows them to log in using email and password, and returns a JWT token that is required for accessing protected routes such as updating user information.
 - **User Profile Update**: Authenticated users can update their profile details (name, password, phone number).
 - **Protected Routes**: Specific routes (e.g., profile update) are protected and require a valid JWT token to access.
@@ -277,21 +275,18 @@ Before setting up this project, ensure you have the following installed:
 
 Here’s an overview of the key files and folders in the project:
 
-````
-
 ├── controllers/
-│   └── userController.js        # Contains all user-related API logic
+│ └── userController.js # Contains all user-related API logic
 ├── models/
-│   └── user.js                  # Mongoose schema for the user model
+│ └── user.js # Mongoose schema for the user model
 ├── routes/
-│   └── userRoutes.js            # Contains routes for user authentication and profile management
-├── .env                          # Environment variables (not included in the repo)
-├── index.js                      # Main entry point of the application
-├── package.json                  # Project dependencies and scripts
+│ └── userRoutes.js # Contains routes for user authentication and profile management
+├── .env # Environment variables (not included in the repo)
+├── index.js # Main entry point of the application
+├── package.json # Project dependencies and scripts
 └── config/
-└── database.config.js        # MongoDB connection configuration (if any)
+└── database.config.js # MongoDB connection configuration (if any)
 
-```
 
 ---
 
@@ -307,5 +302,4 @@ Here’s an overview of the key files and folders in the project:
 - Add password reset functionality via email.
 - Implement user email verification upon signup.
 - Add rate-limiting to protect against brute force attacks.
-```
 
